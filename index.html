@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nadia Madi — Filmmaker · Videomaker · Storymaker</title>
+<meta name="description" content="Filmmaker e videomaker no Rio de Janeiro. Conto histórias com a câmera — do briefing ao frame final. Marcas, pessoas e momentos que merecem ser lembrados." />
+<meta name="author" content="Nadia Madi" />
+<meta property="og:title" content="Nadia Madi — Filmmaker" />
+<meta property="og:description" content="Bastidores de quem conta histórias. Rio de Janeiro." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="theme-color" content="#0E0D0B" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E0D0B'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Cormorant Garamond,serif' font-size='16' font-style='italic' fill='%23C4B89A'%3ENM%3C/text%3E%3C/svg%3E" />
+<style>
+  :root {
+    --noir: #0E0D0B;
+    --carvao: #1C1916;
+    --carvao-2: #2A2720;
+    --terra: #4A4238;
+    --bege: #C8C0B4;
+    --cream: #E8E2D9;
+    --pelicula: #F0EBE3;
+    --ouro: #C4B89A;
+    --ouro-dim: #8A7A5A;
+    --muted: #5C5650;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--noir);
+    color: var(--cream);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+  .italic { font-style: italic; }
+
+  /* GRAIN overlay global */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 22px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(14,13,11,0.85) 0%, rgba(14,13,11,0) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-brand .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--ouro);
+    display: inline-block;
+  }
+  .nav-brand b { font-weight: 500; font-style: italic; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.65;
+    transition: opacity 0.3s ease, color 0.3s ease;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--ouro); }
+  @media (max-width: 720px) {
+    nav { padding: 18px 24px; }
+    .nav-links { gap: 18px; }
+    .nav-links a { font-size: 9px; letter-spacing: 0.18em; }
+  }
+  @media (max-width: 480px) {
+    .nav-links a:nth-child(2),
+    .nav-links a:nth-child(3) { display: none; }
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(60px, 14vw, 200px);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--cream);
+    opacity: 0;
+    animation: fadeIn 1.4s ease 0.4s forwards;
+  }
+  .hero-name b {
+    font-weight: 500;
+    font-style: italic;
+  }
+  .hero-name .dot {
+    display: inline-block;
+    width: clamp(10px, 1.6vw, 22px);
+    height: clamp(10px, 1.6vw, 22px);
+    background: var(--ouro);
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: 0.08em;
+    position: relative;
+    top: -0.32em;
+    box-shadow: 0 0 30px rgba(196, 184, 154, 0.4);
+  }
+  .hero-tagline {
+    font-size: clamp(10px, 1.1vw, 12px);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bege);
+    margin-top: 36px;
+    opacity: 0;
+    animation: fadeIn 1.4s ease 0.7s forwards;
+  }
+  .hero-tagline span {
+    display: inline-block;
+    margin: 0 14px;
+    color: var(--ouro);
+  }
+  .hero-handle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ouro);
+    margin-top: 18px;
+    opacity: 0;
+    animation: fadeIn 1.4s ease 0.9s forwards;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeIn 1.6s ease 1.4s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-scroll::after {
+    content: "";
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--ouro), transparent);
+    animation: scrollHint 2.2s ease-in-out infinite;
+  }
+  @keyframes scrollHint {
+    0%, 100% { transform: scaleY(0.4); transform-origin: top; opacity: 0.6; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION base */
+  section.block {
+    position: relative;
+    z-index: 2;
+    padding: 120px 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  @media (max-width: 720px) {
+    section.block { padding: 80px 24px; }
+  }
+  .sec-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sec-label::before {
+    content: "";
+    width: 24px; height: 1px;
+    background: var(--ouro);
+  }
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    max-width: 14ch;
+    margin-bottom: 48px;
+  }
+  .sec-title em { font-style: italic; font-weight: 400; color: var(--ouro); }
+
+  /* REEL */
+  .reel-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--carvao);
+    border: 0.5px solid var(--carvao-2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 24px;
+  }
+  .reel-wrap iframe,
+  .reel-wrap video {
+    width: 100%; height: 100%;
+    border: 0;
+    display: block;
+  }
+  .reel-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    background:
+      radial-gradient(ellipse at center, rgba(196,184,154,0.06) 0%, transparent 60%),
+      linear-gradient(135deg, var(--carvao) 0%, var(--noir) 100%);
+    cursor: pointer;
+    transition: background 0.4s ease;
+  }
+  .reel-placeholder:hover { background: var(--noir); }
+  .play-btn {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    border: 1px solid var(--ouro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .play-btn:hover { transform: scale(1.08); background: rgba(196,184,154,0.06); }
+  .play-btn svg { width: 22px; height: 22px; fill: var(--ouro); margin-left: 4px; }
+  .reel-caption {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* SOBRE */
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  .sobre-text p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--bege);
+    margin-bottom: 22px;
+    font-weight: 300;
+  }
+  .sobre-text p:first-of-type {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--cream);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .sobre-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-top: 12px;
+  }
+  .meta-row {
+    border-top: 0.5px solid var(--carvao-2);
+    padding-top: 18px;
+  }
+  .meta-label {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--cream);
+  }
+  .meta-value em { color: var(--ouro); font-style: italic; }
+
+  /* TRABALHOS */
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  @media (max-width: 900px) {
+    .works-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .work {
+    position: relative;
+    overflow: hidden;
+    background: var(--carvao);
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .work.tall { grid-column: span 2; grid-row: span 2; aspect-ratio: 4/5; }
+  .work.wide { grid-column: span 4; aspect-ratio: 16/9; }
+  .work.sq   { grid-column: span 2; aspect-ratio: 1; }
+  .work.cream-bg { background: var(--pelicula); }
+  @media (max-width: 900px) {
+    .work, .work.tall, .work.wide, .work.sq {
+      grid-column: span 2; grid-row: auto;
+      aspect-ratio: 1;
+    }
+  }
+  .work-media {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s ease, filter 0.5s ease;
+    filter: grayscale(0.2) brightness(0.85);
+  }
+  .work:hover .work-media {
+    transform: scale(1.04);
+    filter: grayscale(0) brightness(1);
+  }
+  .work-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(14,13,11,0.92) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    z-index: 2;
+  }
+  .work.cream-bg .work-overlay {
+    background: linear-gradient(180deg, transparent 50%, rgba(240,235,227,0.92) 100%);
+  }
+  .work-tag {
+    font-size: 9px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    margin-bottom: 6px;
+  }
+  .work.cream-bg .work-tag { color: var(--ouro-dim); }
+  .work-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  .work.cream-bg .work-title { color: var(--noir); }
+  .work-dot {
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--ouro);
+    z-index: 2;
+  }
+  .work-placeholder {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(0.2) brightness(0.85);
+    transition: transform 0.8s ease, filter 0.5s ease;
+  }
+
+  /* SERVIÇOS */
+  .services-band {
+    background: var(--pelicula);
+    color: var(--noir);
+    margin-top: 80px;
+    border-radius: 4px;
+    padding: 80px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .services-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  @media (max-width: 720px) {
+    .services-band { padding: 56px 28px; }
+  }
+  .services-band .sec-label { color: var(--ouro-dim); }
+  .services-band .sec-label::before { background: var(--ouro-dim); }
+  .services-band .sec-title { color: var(--noir); }
+  .services-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 56px;
+    position: relative;
+  }
+  @media (max-width: 900px) {
+    .services-list { grid-template-columns: 1fr; }
+  }
+  .service {
+    padding: 32px 28px;
+    border-left: 0.5px solid rgba(74,66,56,0.2);
+    position: relative;
+  }
+  .service:first-child { border-left: none; padding-left: 0; }
+  @media (max-width: 900px) {
+    .service {
+      border-left: none;
+      border-top: 0.5px solid rgba(74,66,56,0.2);
+      padding: 28px 0;
+    }
+    .service:first-child { border-top: none; padding-top: 0; }
+  }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ouro-dim);
+    margin-bottom: 18px;
+    display: block;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--noir);
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  .service-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #3A3530;
+    font-weight: 300;
+  }
+
+  /* MANIFESTO / FAIXA */
+  .manifesto {
+    padding: 160px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 720px) { .manifesto { padding: 100px 24px; } }
+  .manifesto blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 4.2vw, 56px);
+    line-height: 1.25;
+    color: var(--cream);
+    max-width: 22ch;
+    margin: 0 auto;
+    letter-spacing: -0.01em;
+  }
+  .manifesto blockquote::before,
+  .manifesto blockquote::after {
+    content: "";
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--ouro);
+    margin: 32px auto;
+  }
+  .manifesto cite {
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* CONTATO */
+  .contato {
+    padding: 120px 40px 80px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  @media (max-width: 720px) { .contato { padding: 80px 24px 60px; } }
+  .contato .sec-label {
+    justify-content: center;
+  }
+  .contato .sec-label::before { display: none; }
+  .contato h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(48px, 8vw, 110px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 56px;
+  }
+  .contato h2 .dot {
+    display: inline-block;
+    width: 12px; height: 12px;
+    background: var(--ouro);
+    border-radius: 50%;
+    margin-left: 8px;
+    vertical-align: middle;
+    transform: translateY(-0.4em);
+  }
+  .contato-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 48px;
+    margin-bottom: 80px;
+  }
+  .contato-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+  }
+  .contato-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: var(--ouro);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .contato-links a:hover {
+    color: var(--ouro);
+  }
+  .contato-links a:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 40px 32px;
+    border-top: 0.5px solid var(--carvao-2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  @media (max-width: 600px) {
+    footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
+  }
+  footer .monogram {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--ouro);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ouro);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  footer .left,
+  footer .right {
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  ::selection { background: var(--ouro); color: var(--noir); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="nav-brand">nadia<b>madi</b><span class="dot"></span></a>
+  <div class="nav-links">
+    <a href="#reel">Reel</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#trabalhos">Trabalhos</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-label">filmmaker · rio de janeiro · 2025</div>
+  <h1 class="hero-name">nadia<b>madi</b><span class="dot"></span></h1>
+  <div class="hero-tagline">
+    filmmaker <span>·</span> videomaker <span>·</span> storymaker
+  </div>
+  <div class="hero-handle">@madiifilmm — Rio de Janeiro</div>
+  <div class="hero-scroll">scroll</div>
+</header>
+
+<section class="block reveal" id="reel">
+  <div class="sec-label">Reel — 2025</div>
+  <h2 class="sec-title">Cada cena <em>tem uma história</em> para contar.</h2>
+  <div class="reel-wrap">
+    <!-- SUBSTITUA o conteúdo abaixo por <iframe> do Vimeo/YouTube ou <video src="..."> quando tiver o reel da Nádia.
+         Exemplo Vimeo:  <iframe src="https://player.vimeo.com/video/SEU_ID?autoplay=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+         Exemplo YouTube: <iframe src="https://www.youtube.com/embed/SEU_ID" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe> -->
+    <div class="reel-placeholder" onclick="alert('Substitua este placeholder pelo embed do reel — instruções no comentário do código.');">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="reel-caption">Adicionar reel principal</div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="sobre">
+  <div class="sec-label">Sobre</div>
+  <h2 class="sec-title">Bastidores de quem <em>conta histórias</em>.</h2>
+  <div class="sobre-grid">
+    <div class="sobre-text">
+      <p>Conto histórias com a câmera — do briefing ao frame final.</p>
+      <p>Marcas, pessoas e momentos que merecem ser lembrados. Trabalho com filmes editoriais, conteúdo para marcas e registros autorais que cruzam documentário, moda e processo criativo.</p>
+      <p>Acredito em luz que não se planeja, em silêncio entre takes, em decisão que se toma no corte. A câmera, para mim, é extensão — não barreira.</p>
+    </div>
+    <div class="sobre-meta">
+      <div class="meta-row">
+        <div class="meta-label">Base</div>
+        <div class="meta-value">Rio de Janeiro <em>· BR</em></div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">Atuação</div>
+        <div class="meta-value">Direção · Câmera · <em>Edição</em></div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">Formatos</div>
+        <div class="meta-value">Filme <em>· Reels</em> · Documental</div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">Disponibilidade</div>
+        <div class="meta-value">Projetos <em>2025 / 2026</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="trabalhos">
+  <div class="sec-label">Trabalhos selecionados</div>
+  <h2 class="sec-title">Frames que <em>ficaram</em>.</h2>
+  <div class="works-grid">
+    <!-- Cada .work é um placeholder pronto pra receber thumbnail real.
+         Para colocar imagem: troque o style="background:..." pelo background-image: url('caminho/da/imagem.jpg') -->
+    <article class="work tall">
+      <div class="work-placeholder" style="background:
+        linear-gradient(135deg, #1A1814 0%, #2A2720 100%);"></div>
+      <span class="work-dot"></span>
+      <div class="work-overlay">
+        <div class="work-tag">Filme · 2025</div>
+        <div class="work-title">antes do primeiro clique</div>
+      </div>
+    </article>
+    <article class="work wide cream-bg">
+      <div class="work-placeholder" style="background:
+        linear-gradient(135deg, #E8E2D9 0%, #F0EBE3 100%);"></div>
+      <span class="work-dot" style="background:#4A4238;"></span>
+      <div class="work-overlay">
+        <div class="work-tag">Marca · Editorial</div>
+        <div class="work-title">a câmera como extensão</div>
+      </div>
+    </article>
+    <article class="work sq">
+      <div class="work-placeholder" style="background:
+        linear-gradient(160deg, #2A2720 0%, #4A4238 100%);"></div>
+      <span class="work-dot"></span>
+      <div class="work-overlay">
+        <div class="work-tag">Projeto</div>
+        <div class="work-title">timing studio</div>
+      </div>
+    </article>
+    <article class="work sq">
+      <div class="work-placeholder" style="background:
+        linear-gradient(135deg, #0E0D0B 0%, #1C1916 100%);"></div>
+      <span class="work-dot"></span>
+      <div class="work-overlay">
+        <div class="work-tag">Documental</div>
+        <div class="work-title">rio, 6h da manhã</div>
+      </div>
+    </article>
+    <article class="work wide">
+      <div class="work-placeholder" style="background:
+        linear-gradient(160deg, #1C1916 0%, #4A4238 60%, #C4B89A 140%);"></div>
+      <span class="work-dot"></span>
+      <div class="work-overlay">
+        <div class="work-tag">Bastidores</div>
+        <div class="work-title">luz que não se planeja</div>
+      </div>
+    </article>
+    <article class="work sq cream-bg">
+      <div class="work-placeholder" style="background:
+        linear-gradient(135deg, #F0EBE3 0%, #C4B89A 140%);"></div>
+      <span class="work-dot" style="background:#4A4238;"></span>
+      <div class="work-overlay">
+        <div class="work-tag">Visão</div>
+        <div class="work-title">storymaking e afeto</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block reveal" id="servicos">
+  <div class="services-band">
+    <div class="sec-label">Serviços</div>
+    <h2 class="sec-title">Do briefing <em>ao frame final</em>.</h2>
+    <div class="services-list">
+      <div class="service">
+        <span class="service-num">01 / Filme</span>
+        <h3 class="service-name">Filmes para marcas</h3>
+        <p class="service-desc">Campanhas, manifestos, lançamentos. Direção, captação e edição com olhar editorial — do conceito à entrega final em 4K.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">02 / Reels</span>
+        <h3 class="service-name">Conteúdo social</h3>
+        <p class="service-desc">Reels, bastidores e séries para Instagram e TikTok. Ritmo cinematográfico em formato vertical — sem perder a alma da marca.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">03 / Documental</span>
+        <h3 class="service-name">Registros autorais</h3>
+        <p class="service-desc">Documentário curto, retratos, processos criativos. Para quem quer guardar um momento — não só comunicar um produto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto reveal">
+  <blockquote>
+    A luz que não se planeja é a que fica.
+  </blockquote>
+  <cite>Madiifilmm · 2025</cite>
+</section>
+
+<section class="contato reveal" id="contato">
+  <div class="sec-label">Vamos filmar</div>
+  <h2>conversa<span class="dot"></span></h2>
+  <div class="contato-links">
+    <a href="mailto:contato@nadiamadi.com">contato@nadiamadi.com</a>
+    <a href="https://instagram.com/madiifilmm" target="_blank" rel="noopener">@madiifilmm</a>
+    <a href="https://wa.me/5521000000000" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="left">
+    <span class="monogram">NM</span>
+    <span>Nadia Madi · Filmmaker</span>
+  </div>
+  <div class="right">
+    <span>Rio de Janeiro</span>
+    <span>·</span>
+    <span>© 2025</span>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Smooth nav highlight (opcional, leve)
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href');
+      if (id && id.startsWith('#')) {
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
